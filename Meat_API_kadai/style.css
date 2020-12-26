@@ -1,0 +1,5 @@
+#container {
+  /* 全体のサイズ */
+  height: 800px;
+  width: device-width;
+}

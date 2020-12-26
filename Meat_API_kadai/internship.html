@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang=ja>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="img/favicon.svg">
+    <title>
+        インターンシップ用資材
+    </title>
+    <script crossorigin src=" https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src=" https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/babel" src="./rendering.jsx"></script>
+    <script type="text/babel" src="./send.jsx"></script>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+    <script type="text/babel">
+        // ファイルを開くの状態変更時処理
+        $("#selectFile").change(function () {
+            if (imageFileRendering($(this).prop('files')[0])) {
+                $('#sendAction').prop('disabled', false);
+            } else {
+                $('#sendAction').prop('disabled', true);
+            }
+        });
+
+        // 点数評価ボタン押下処理
+        $('#sendAction').on('click', function () {
+            // send.jsxのsend呼出し
+            send($('#selectFile').prop('files')[0], $('#predict').val());
+        });
+    </script>
+</head>
+
+<body>　
+    <div id="container">
+        <h1>お肉点数</h1>
+        <div id="imageContainer">
+
+        </div>
+        <input hidden="true" type="file" accept=".jpg,.jpeg,.png,.gif" id="selectFile" />
+
+        <button onclick="$('#selectFile').click();" id="open">ファイルを開く</button>
+
+        <br>
+
+        <label for="label">予想点数</label>
+
+        <select id="predict">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+        </select>
+
+        <br>
+
+        <button id="sendAction" disabled="true">点数評価</button>
+
+        <p>お肉の点数は</p>
+        <div id="result">
+            <!-- scoreを出力する -->
+        </div>
+        <p>です！</p>
+    </div>
+</body>
+
+</html>
