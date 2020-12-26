@@ -23,6 +23,10 @@ function imageFileRendering(file) {
 // APIのResponseのスコアをレンダリングする
 function scoreRendering(score) {
     // TODO: スコアをレンダリングする。
+    ReactDOM.render(
+        <p>{score}</p>,
+        document.getElementById('result')
+        );
 }
 
 // 他ファイルからも試用できるようwindowに登録
