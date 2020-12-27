@@ -28,7 +28,7 @@ function send(file, predict) {
     }).done(function(data) {
         console.log('success');
         console.log(data);
-        score = data.result[0].score;
+        score = data.result.score;
     }).fail(function(data) {
         console.log('failed');
         console.log(data);
