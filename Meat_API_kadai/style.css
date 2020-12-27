@@ -1,5 +1,94 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: Verdana,sans-serif;
+}
+
+body {
+  background-color: #fafafa;
+}
+
 #container {
   /* 全体のサイズ */
-  height: 800px;
+  height: 530px;
   width: device-width;
+}
+
+header {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: bold;
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  /* right: 50%; */
+  margin-left: 60px;
+  margin-top: 8px;
+}
+
+.background-wrap {
+  position: relative;
+}
+
+.background-img {
+  width: 100%;
+  height: 500px;
+  background-image: url(./img/backgroundMeat.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: static;
+  z-index: 1;
+}
+
+.open-file-wrap {
+  margin: 0 auto;
+  background-color: #fafafa;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: -30px;
+  left: 25%;
+  width: 50%;
+  border-radius: 10px;
+  border: 0.2px solid black;
+}
+
+.evaluate {
+  line-height: 40px;
+  font-size: 20px;
+  padding: 20px;
+  margin: 0;
+}
+
+#open {
+  border: 2px solid #ff6347;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #ff6347;
+  outline: none;
+  width: 120px;
+  height: 35px;
+  margin: 0 5px;
+  transition: 0.4s;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+#open:hover {
+  background-color: #ff6347;
+  color: #fff;
+  cursor: pointer;
+}
+
+#contents {
+  background-color: #fafafa;
+  width: 300px;
+  margin: 100px auto;
+  padding: 12px;
+  box-shadow: 0 0 6px rgba(0, 0, 0, .4);
+  border-radius: 10px;
+  text-align: center;
 }

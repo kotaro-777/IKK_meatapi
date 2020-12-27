@@ -34,43 +34,69 @@
     </script>
 </head>
 
-<body>　
+<body>
     <div id="container">
-        <h1>お肉点数</h1>
-        <div id="imageContainer">
-
+        <header>ホルモン</header>
+        <div class="background-wrap">
+            <div class="background-img"></div>
+            <div class="open-file-wrap">
+                <h2 class="evaluate">\ お肉の点数を付けてみよう! /</h2>
+                <button onclick="$('#selectFile').click(); clickEvaluate(); scrollToContents();"
+                    id="open">ファイルを開く</button>
+            </div>
         </div>
-        <input hidden="true" type="file" accept=".jpg,.jpeg,.png,.gif" id="selectFile" />
+        <div id="contents" hidden="true">
+            <div id="imageContainer"></div>
+            <input hidden="true" type="file" accept=".jpg,.jpeg,.png,.gif" id="selectFile" />
 
-        <button onclick="$('#selectFile').click();" id="open">ファイルを開く</button>
 
-        <br>
+            <br>
 
-        <label for="label">予想点数</label>
+            <label for="label">予想点数</label>
 
-        <select id="predict">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-        </select>
+            <select id="predict">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+            </select>
 
-        <br>
+            <br>
 
-        <button id="sendAction" disabled="true">点数評価</button>
+            <button id="sendAction" disabled="true">点数評価</button>
 
-        <p>お肉の点数は</p>
-        <div id="result">
-            <!-- scoreを出力する -->
+            <p>お肉の点数は</p>
+            <div id="result">
+                <!-- scoreを出力する -->
+            </div>
+            <p>です！</p>
         </div>
-        <p>です！</p>
     </div>
 </body>
 
 </html>
+<script>
+    function clickEvaluate() {
+        const contents = document.getElementById("contents");
+
+        if (contents.hidden == true) {
+            contents.hidden = false
+        } else {
+            contents.hidden = true;
+        }
+    }
+
+    function scrollToContents() {
+        const element = document.getElementById('contents');
+        const rect = element.getBoundingClientRect();
+        const position = rect.top;
+        scrollTo(0, position);
+    }
+
+</script>
