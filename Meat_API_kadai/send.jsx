@@ -1,15 +1,3 @@
-アイケイケイ
-
-肉アプリ　ホルモン
-
-コード管理
-	Git
-
-レイアウト
-	色　赤と白
-余裕ができたら
-	アクションあったらいいな
-	
 // API呼び出し時にひつようなパラメータを受ける。
 function send(file, predict) {
 
@@ -18,31 +6,33 @@ function send(file, predict) {
     var END_POINT = 'https://api.a3rt.recruit-tech.co.jp/image_influence/v1/meat_score';
 
     // TODO: サンプルの値を設定
-    const score = "3.00";
+    var score = 3;
+    // const score;
 
-    // 予想点数(predict)と画像(imagefile)の変数
-    const PREDICT = $('#predict').val()
-    const IMAGE_FILE = $('#imageContainer').val()
     // TODO: API呼び出し
+    const fd = new FormData();
+    fd.append('apikey', API_KEY);
+    fd.append('predict', predict);
+    fd.append('imagefile', file);
+
     $.ajax({
-        url   : END_POINT,
+        url:    END_POINT,
         method: 'POST',
-        data  : {
-            apikey   : API_KEY,
-            predict  : PREDICT,
-            imagefile: IMAGE_FILE
-        },
+        processData: false,
+        contentType: false,
+        data: fd,
         xhrFields: {
             withCredentials: true
         },
 
     }).done(function(data) {
-        console.log('success')
-        score = data.results[0]['score'];
+        console.log('success');
+        console.log(data);
+        score = data.result.score;
     }).fail(function(data) {
         console.log('failed');
+        console.log(data);
     });
-
     // Responseとして返却されたスコアを引数に渡す。
     scoreRendering(score);
 };
